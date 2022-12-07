@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <table id="npshow"></table>
+    </body>
+</html>
+<script src="np.js"></script>
+<script>
+    function showNP(npdata) {
+        let nps = document.getElementById("npshow");
+        nps.innerHTML = "";
+        for (let i=0;i<9;i++) {
+            let tr = document.createElement("tr");
+            for (let j=0;j<9;j++) {
+                let td = document.createElement("td");
+                td.innerHTML = npdata[j][i];
+                tr.appendChild(td);
+            }
+            nps.appendChild(tr);
+        }
+    }
+</script>
+<script>
+
+let npboard = new NPdata();
+{
+npboard.setNumber(2,1,4);npboard.setNumber(8,1,6);npboard.setNumber(2,2,6);npboard.setNumber(4,2,4);npboard.setNumber(8,2,3);npboard.setNumber(9,2,9);npboard.setNumber(3,3,5);npboard.setNumber(9,3,2);npboard.setNumber(1,4,4);
+npboard.setNumber(2,4,5);npboard.setNumber(6,4,1);npboard.setNumber(7,4,9);npboard.setNumber(8,4,8);npboard.setNumber(1,5,3);npboard.setNumber(6,5,5);npboard.setNumber(2,6,1);npboard.setNumber(5,6,3);npboard.setNumber(8,6,4);
+npboard.setNumber(2,7,3);npboard.setNumber(3,7,4);npboard.setNumber(5,7,1);npboard.setNumber(6,7,7);npboard.setNumber(7,7,6);npboard.setNumber(3,8,7);npboard.setNumber(4,8,5);npboard.setNumber(3,9,1);npboard.setNumber(4,9,9);
+npboard.setNumber(5,9,6);npboard.setNumber(8,9,5);
+}
+showNP(npboard.get());
+
+
+
+</script>
+<style>
+    #npshow {
+        border: 1px solid;
+    }
+    #npshow td {
+        border: 1px solid;
+        font-size: 40px;
+        text-align: center;
+        height: 50px;
+        width: 50px;
+    }
+</style>
