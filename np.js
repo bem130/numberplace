@@ -22,11 +22,6 @@ class SolveNP {
                 for (let k=0;k<9;k++) {
                     this.sboard[i][j].push(true);
                 }
-            }
-        }
-        // the first condition
-        for (let i=0;i<9;i++) {
-            for (let j=0;j<9;j++) {
                 if (this.sboard[i][j][0]!=null) {
                     for (let k=1;k<10;k++) {
                         if (this.sboard[i][j][0]!=k) {
@@ -42,9 +37,67 @@ class SolveNP {
     updateStat() {
         for (let i=0;i<9;i++) {
             for (let j=0;j<9;j++) {
-                // conditions
+                this.stat(i,j);
+            }
+        }
+        for (let i=0;i<9;i++) {
+            for (let j=0;j<9;j++) {
+                if (this.countFalse(i,j)!=0) {
+                    this.sboard[i][j][0] = this.countFalse(i,j)
+                }
             }
         }
         console.table(this.sboard);
+    }
+    getRow(x,y) {
+        let ret = new Array(9);
+        for (let i=0;i<9;i++) {
+            ret[i] = this.sboard[i][y][0];
+        }
+        return ret;
+    }
+    getCol(x,y) {
+        let ret = new Array(9);
+        for (let i=0;i<9;i++) {
+            ret[i] = this.sboard[x][i][0];
+        }
+        return ret;
+    }
+    getArea(x,y) {
+        let ret = new Array(9);
+        for (let i=0;i<3;i++) {
+            for (let j=0;j<3;j++) {
+                ret[i+j*3] = this.sboard[Math.floor(x/3)*3+i][Math.floor(y/3)*3+j][0];
+            }
+        }
+        return ret;
+    }
+    stat(x,y) {
+        let a = this.getRow(x,y);
+        let b = this.getCol(x,y);
+        let c = this.getArea(x,y);
+        for (let i=0;i<9;i++) {
+            if (a[i]!=null) {this.sboard[x][y][a[i]] = false;}
+        }
+        for (let i=0;i<9;i++) {
+            if (b[i]!=null) {this.sboard[x][y][b[i]] = false;}
+        }
+        for (let i=0;i<9;i++) {
+            if (c[i]!=null) {this.sboard[x][y][c[i]] = false;}
+        }
+    }
+    countFalse(x,y) {
+        let ret = 0;
+        let tc = 0;
+        for (let i=1;i<10;i++) {
+            if (this.sboard[x][y]==true) {
+                tc = i;
+                ret++;
+            }
+        }
+        if (ret==1) {
+            return tc;
+        }
+        return 0;
     }
 }

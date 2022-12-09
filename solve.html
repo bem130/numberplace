@@ -3,13 +3,13 @@
     <head>
     </head>
     <body>
-        <table id="npshow"></table>
+        <div id="res"></div>
     </body>
 </html>
 <script src="np.js"></script>
 <script>
     function showNP(npdata) {
-        let nps = document.getElementById("npshow");
+        let nps = document.createElement("table");
         nps.innerHTML = "";
         for (let i=0;i<9;i++) {
             let tr = document.createElement("tr");
@@ -20,6 +20,7 @@
             }
             nps.appendChild(tr);
         }
+        document.getElementById("res").appendChild(nps);
     }
 </script>
 <script>
@@ -37,10 +38,10 @@ let result = new SolveNP(npboard);
 
 </script>
 <style>
-    #npshow {
+    #res table {
         border: 1px solid;
     }
-    #npshow td {
+    #res td {
         border: 1px solid;
         font-size: 40px;
         text-align: center;
