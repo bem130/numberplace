@@ -4,6 +4,7 @@ class NPdata {
         for (let i=0;i<9;i++) {this.board[i] = new Array(9).fill(null);}
     }
     setNumber(x,y,n) {this.board[x-1][y-1] = n;}
+    getCell(x,y) {return this.board[x-1][y-1];}
     get() {return this.board;}
 }
 
