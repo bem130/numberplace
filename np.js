@@ -52,14 +52,14 @@ class SolveNP {
     getRow(x,y) {
         let ret = new Array(9);
         for (let i=0;i<9;i++) {
-            ret[i] = this.sboard[i][y][0];
+            ret[i] = this.sboard[i][y];
         }
         return ret;
     }
     getCol(x,y) {
         let ret = new Array(9);
         for (let i=0;i<9;i++) {
-            ret[i] = this.sboard[x][i][0];
+            ret[i] = this.sboard[x][i];
         }
         return ret;
     }
@@ -67,7 +67,7 @@ class SolveNP {
         let ret = new Array(9);
         for (let i=0;i<3;i++) {
             for (let j=0;j<3;j++) {
-                ret[i+j*3] = this.sboard[Math.floor(x/3)*3+i][Math.floor(y/3)*3+j][0];
+                ret[i+j*3] = this.sboard[Math.floor(x/3)*3+i][Math.floor(y/3)*3+j];
             }
         }
         return ret;
@@ -77,13 +77,13 @@ class SolveNP {
         let b = this.getCol(x,y);
         let c = this.getArea(x,y);
         for (let i=0;i<9;i++) {
-            if (a[i]!=null) {this.sboard[x][y][a[i]] = false;}
+            if (a[i][0]!=null) {this.sboard[x][y][a[i][0]] = false;}
         }
         for (let i=0;i<9;i++) {
-            if (b[i]!=null) {this.sboard[x][y][b[i]] = false;}
+            if (b[i][0]!=null) {this.sboard[x][y][b[i][0]] = false;}
         }
         for (let i=0;i<9;i++) {
-            if (c[i]!=null) {this.sboard[x][y][c[i]] = false;}
+            if (c[i][0]!=null) {this.sboard[x][y][c[i][0]] = false;}
         }
     }
     countFalse(x,y) {
