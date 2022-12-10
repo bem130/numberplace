@@ -39,7 +39,7 @@ class SolveNP {
                 }
             }
         }
-        for (let t=0;t<100;t++) {
+        for (let t=0;t<10;t++) {
             this.updateStat();
         }
     }
@@ -142,13 +142,13 @@ class SolveNP {
         if (ret==1) {
             return tc;
         }
-        return 0;
+        return null;
     }
     findSolitary() {
         // rows
         for (let i=0;i<9;i++) {
             for (let k=1;k<10;k++) {
-                if (this.NuminSectorSolitary(this.getRow(0,i),k)!=0) {
+                if (this.NuminSectorSolitary(this.getRow(0,i),k)!=null) {
                     if (this.sboard[this.NuminSectorSolitary(this.getRow(0,i),k)][i][0]==null) {
                         this.sboard[this.NuminSectorSolitary(this.getRow(0,i),k)][i][0] = k;
                     }
@@ -158,7 +158,7 @@ class SolveNP {
         // cols
         for (let i=0;i<9;i++) {
             for (let k=1;k<10;k++) {
-                if (this.NuminSectorSolitary(this.getCol(i,0),k)!=0) {
+                if (this.NuminSectorSolitary(this.getCol(i,0),k)!=null) {
                     if (this.sboard[i][this.NuminSectorSolitary(this.getCol(i,0),k)][0]==null) {
                         this.sboard[i][this.NuminSectorSolitary(this.getCol(i,0),k)][0] = k;
                     }
@@ -169,8 +169,7 @@ class SolveNP {
         for (let i=0;i<9;i+=3) {
             for (let j=0;j<9;j+=3) {
                 for (let k=1;k<10;k++) {
-                    //console.log(i,j)
-                    if (this.NuminSectorSolitary(this.getArea(i,j),k)!=0) {
+                    if (this.NuminSectorSolitary(this.getArea(i,j),k)!=null) {
                         let n = this.NuminSectorSolitary(this.getArea(i,j),k);
                         if (this.sboard[n%3+i][(n-n%3)/3+j][0]==null) {
                             this.sboard[n%3+i][(n-n%3)/3+j][0] = k;
