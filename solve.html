@@ -8,7 +8,7 @@
 </html>
 <script src="np.js"></script>
 <script>
-    function showNP(npdata) {
+    function showNPdata(npdata) {
         let nps = document.createElement("table");
         nps.innerHTML = "";
         for (let i=0;i<9;i++) {
@@ -16,6 +16,31 @@
             for (let j=0;j<9;j++) {
                 let td = document.createElement("td");
                 td.innerHTML = npdata[j][i];
+                tr.appendChild(td);
+            }
+            nps.appendChild(tr);
+        }
+        document.getElementById("res").appendChild(nps);
+    }
+    function showSolveNP(npdata) {
+        let nps = document.createElement("table");
+        nps.innerHTML = "";
+        for (let i=0;i<9;i++) {
+            let tr = document.createElement("tr");
+            for (let j=0;j<9;j++) {
+                let td = document.createElement("td");
+                    let nps = document.createElement("table");
+                    nps.innerHTML = "";
+                    for (let i=0;i<3;i++) {
+                        let tr = document.createElement("tr");
+                        for (let j=0;j<3;j++) {
+                            let td = document.createElement("td");
+                            td.innerHTML = i*3+j+1;
+                            tr.appendChild(td);
+                        }
+                        nps.appendChild(tr);
+                    }
+                td.appendChild(nps);
                 tr.appendChild(td);
             }
             nps.appendChild(tr);
@@ -32,20 +57,41 @@ npboard.setNumber(2,4,5);npboard.setNumber(6,4,1);npboard.setNumber(7,4,9);npboa
 npboard.setNumber(2,7,3);npboard.setNumber(3,7,4);npboard.setNumber(5,7,1);npboard.setNumber(6,7,7);npboard.setNumber(7,7,6);npboard.setNumber(3,8,7);npboard.setNumber(4,8,5);npboard.setNumber(3,9,1);npboard.setNumber(4,9,9);
 npboard.setNumber(5,9,6);npboard.setNumber(8,9,5);
 }
-showNP(npboard.get());
+showNPdata(npboard.get());
+showSolveNP(npboard.get());
 let result = new SolveNP(npboard);
 
 
 </script>
 <style>
     #res table {
+        margin: 10px;
         border: 1px solid;
     }
     #res td {
+        line-height:50px;
         border: 1px solid;
-        font-size: 40px;
+        font-size: 50px;
         text-align: center;
         height: 50px;
         width: 50px;
+        margin: 0px;
+        padding: 0px;
+    }
+    #res table table {
+        margin: 0px;
+        padding: 0px;
+        border: none;
+    }
+    #res table table td {
+        line-height:10px;
+        border: none;
+        margin: 0px;
+        padding: 0px;
+        font-size: 20px;
+        text-anchor: middle;
+        text-align: center;
+        height: 16px;
+        width: 16px;
     }
 </style>
