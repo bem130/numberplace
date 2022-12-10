@@ -66,10 +66,19 @@ showNPdata(new NPdata().setSolveNP(result));
 
 </script>
 <style>
+    #res>table {
+        border-collapse: collapse;
+    }
     #res table {
         display: inline-block;
         margin: 10px;
         border: 1px solid;
+    }
+    #res>table>tr>td:is(:nth-child(3),:nth-child(6)){
+        border-right: solid 3px black;
+    }
+    #res>table>tr:is(:nth-child(3),:nth-child(6)) {
+        border-bottom: solid 3px black;
     }
     #res td {
         line-height:50px;
