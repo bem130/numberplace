@@ -58,7 +58,41 @@ class SolveNP {
             }
         }
         //
-        this.findSolitary();
+
+        // rows
+        for (let i=0;i<9;i++) {
+            for (let k=1;k<10;k++) {
+                if (this.NuminSectorSolitary(this.getRow(0,i),k)!=null) {
+                    if (this.sboard[this.NuminSectorSolitary(this.getRow(0,i),k)][i][0]==null) {
+                        this.sboard[this.NuminSectorSolitary(this.getRow(0,i),k)][i][0] = k;
+                    }
+                }
+            }
+        }
+        // cols
+        for (let i=0;i<9;i++) {
+            for (let k=1;k<10;k++) {
+                if (this.NuminSectorSolitary(this.getCol(i,0),k)!=null) {
+                    if (this.sboard[i][this.NuminSectorSolitary(this.getCol(i,0),k)][0]==null) {
+                        this.sboard[i][this.NuminSectorSolitary(this.getCol(i,0),k)][0] = k;
+                    }
+                }
+            }
+        }
+        // areas
+        for (let i=0;i<9;i+=3) {
+            for (let j=0;j<9;j+=3) {
+                for (let k=1;k<10;k++) {
+                    if (this.NuminSectorSolitary(this.getArea(i,j),k)!=null) {
+                        let n = this.NuminSectorSolitary(this.getArea(i,j),k);
+                        if (this.sboard[n%3+i][(n-n%3)/3+j][0]==null) {
+                            this.sboard[n%3+i][(n-n%3)/3+j][0] = k;
+                        }
+                    }
+                }
+            }
+        }
+        //
 
         //        
         for (let i=0;i<9;i++) {
@@ -72,6 +106,7 @@ class SolveNP {
                 }
             }
         }
+        //
     }
 
     getRow(x,y) {
@@ -143,40 +178,5 @@ class SolveNP {
             return tc;
         }
         return null;
-    }
-    findSolitary() {
-        // rows
-        for (let i=0;i<9;i++) {
-            for (let k=1;k<10;k++) {
-                if (this.NuminSectorSolitary(this.getRow(0,i),k)!=null) {
-                    if (this.sboard[this.NuminSectorSolitary(this.getRow(0,i),k)][i][0]==null) {
-                        this.sboard[this.NuminSectorSolitary(this.getRow(0,i),k)][i][0] = k;
-                    }
-                }
-            }
-        }
-        // cols
-        for (let i=0;i<9;i++) {
-            for (let k=1;k<10;k++) {
-                if (this.NuminSectorSolitary(this.getCol(i,0),k)!=null) {
-                    if (this.sboard[i][this.NuminSectorSolitary(this.getCol(i,0),k)][0]==null) {
-                        this.sboard[i][this.NuminSectorSolitary(this.getCol(i,0),k)][0] = k;
-                    }
-                }
-            }
-        }
-        // areas
-        for (let i=0;i<9;i+=3) {
-            for (let j=0;j<9;j+=3) {
-                for (let k=1;k<10;k++) {
-                    if (this.NuminSectorSolitary(this.getArea(i,j),k)!=null) {
-                        let n = this.NuminSectorSolitary(this.getArea(i,j),k);
-                        if (this.sboard[n%3+i][(n-n%3)/3+j][0]==null) {
-                            this.sboard[n%3+i][(n-n%3)/3+j][0] = k;
-                        }
-                    }
-                }
-            }
-        }
     }
 }
