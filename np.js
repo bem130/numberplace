@@ -39,9 +39,9 @@ class SolveNP {
                 }
             }
         }
-        console.table(this.sboard);
-        this.updateStat();
-        console.table(this.sboard);
+        for (let t=0;t<100;t++) {
+            this.updateStat();
+        }
     }
     updateStat() {
         for (let i=0;i<9;i++) {
@@ -56,7 +56,6 @@ class SolveNP {
                 }
             }
         }
-        console.table(this.sboard);
     }
     getRow(x,y) {
         let ret = new Array(9);
