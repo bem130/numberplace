@@ -30,6 +30,7 @@ class SolveNP {
                 for (let k=0;k<9;k++) {
                     this.sboard[i][j].push(true);
                 }
+                // -- C3
                 if (this.sboard[i][j][0]!=null) {
                     for (let k=1;k<10;k++) {
                         if (this.sboard[i][j][0]!=k) {
@@ -44,12 +45,13 @@ class SolveNP {
         }
     }
     updateStat() {
-        //
+        // -- C4
         for (let i=0;i<9;i++) {
             for (let j=0;j<9;j++) {
                 this.stat(i,j);
             }
         }
+        // -- C1
         for (let i=0;i<9;i++) {
             for (let j=0;j<9;j++) {
                 if (this.countTrue(i,j)!=0) {
@@ -57,8 +59,7 @@ class SolveNP {
                 }
             }
         }
-        //
-
+        // -- C5
         // rows
         for (let i=0;i<9;i++) {
             for (let k=1;k<10;k++) {
@@ -92,9 +93,7 @@ class SolveNP {
                 }
             }
         }
-        //
-
-        //        
+        // -- C2
         for (let i=0;i<9;i++) {
             for (let j=0;j<9;j++) {
                 if (this.sboard[i][j][0]!=null) {
@@ -106,7 +105,6 @@ class SolveNP {
                 }
             }
         }
-        //
     }
 
     getRow(x,y) {
