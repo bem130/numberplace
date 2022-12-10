@@ -169,10 +169,10 @@ class SolveNP {
         for (let i=0;i<9;i+=3) {
             for (let j=0;j<9;j+=3) {
                 for (let k=1;k<10;k++) {
+                    //console.log(i,j)
                     if (this.NuminSectorSolitary(this.getArea(i,j),k)!=0) {
                         let n = this.NuminSectorSolitary(this.getArea(i,j),k);
                         if (this.sboard[n%3+i][(n-n%3)/3+j][0]==null) {
-                            console.log(i,j,k)
                             this.sboard[n%3+i][(n-n%3)/3+j][0] = k;
                         }
                     }
