@@ -4,6 +4,14 @@ class NPdata {
         for (let i=0;i<9;i++) {this.board[i] = new Array(9).fill(null);}
     }
     setNumber(x,y,n) {this.board[x-1][y-1] = n;}
+    setSolveNP(solvenp) {
+        for (let i=0;i<9;i++) {
+            for (let j=0;j<9;j++) {
+                this.board[i][j] = solvenp.sboard[i][j][0];
+            }
+        }
+        return this;
+    }
     getCell(x,y) {return this.board[x-1][y-1];}
     get() {return this.board;}
 }
@@ -33,6 +41,7 @@ class SolveNP {
         }
         console.table(this.sboard);
         this.updateStat();
+        console.table(this.sboard);
     }
     updateStat() {
         for (let i=0;i<9;i++) {
@@ -42,8 +51,8 @@ class SolveNP {
         }
         for (let i=0;i<9;i++) {
             for (let j=0;j<9;j++) {
-                if (this.countFalse(i,j)!=0) {
-                    this.sboard[i][j][0] = this.countFalse(i,j)
+                if (this.countTrue(i,j)!=0) {
+                    this.sboard[i][j][0] = this.countTrue(i,j)
                 }
             }
         }
@@ -88,11 +97,11 @@ class SolveNP {
             }
         }
     }
-    countFalse(x,y) {
+    countTrue(x,y) {
         let ret = 0;
         let tc = 0;
         for (let i=1;i<10;i++) {
-            if (this.sboard[x][y]==true) {
+            if (this.sboard[x][y][i]==true) {
                 tc = i;
                 ret++;
             }
