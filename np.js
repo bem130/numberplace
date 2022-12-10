@@ -73,17 +73,19 @@ class SolveNP {
         return ret;
     }
     stat(x,y) {
-        let a = this.getRow(x,y);
-        let b = this.getCol(x,y);
-        let c = this.getArea(x,y);
-        for (let i=0;i<9;i++) {
-            if (a[i][0]!=null) {this.sboard[x][y][a[i][0]] = false;}
-        }
-        for (let i=0;i<9;i++) {
-            if (b[i][0]!=null) {this.sboard[x][y][b[i][0]] = false;}
-        }
-        for (let i=0;i<9;i++) {
-            if (c[i][0]!=null) {this.sboard[x][y][c[i][0]] = false;}
+        if (this.sboard[x][y][0]==null) {
+            let a = this.getRow(x,y);
+            let b = this.getCol(x,y);
+            let c = this.getArea(x,y);
+            for (let i=0;i<9;i++) {
+                if (a[i][0]!=null) {this.sboard[x][y][a[i][0]] = false;}
+            }
+            for (let i=0;i<9;i++) {
+                if (b[i][0]!=null) {this.sboard[x][y][b[i][0]] = false;}
+            }
+            for (let i=0;i<9;i++) {
+                if (c[i][0]!=null) {this.sboard[x][y][c[i][0]] = false;}
+            }
         }
     }
     countFalse(x,y) {

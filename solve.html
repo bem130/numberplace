@@ -15,14 +15,14 @@
             let tr = document.createElement("tr");
             for (let j=0;j<9;j++) {
                 let td = document.createElement("td");
-                td.innerHTML = npdata[j][i];
+                td.innerHTML = npdata.board[j][i];
                 tr.appendChild(td);
             }
             nps.appendChild(tr);
         }
         document.getElementById("res").appendChild(nps);
     }
-    function showSolveNP(npdata) {
+    function showSolveNP(solvenp) {
         let nps = document.createElement("table");
         nps.innerHTML = "";
         for (let i=0;i<9;i++) {
@@ -31,11 +31,12 @@
                 let td = document.createElement("td");
                     let nps = document.createElement("table");
                     nps.innerHTML = "";
-                    for (let i=0;i<3;i++) {
+                    for (let li=0;li<3;li++) {
                         let tr = document.createElement("tr");
-                        for (let j=0;j<3;j++) {
+                        for (let lj=0;lj<3;lj++) {
                             let td = document.createElement("td");
-                            td.innerHTML = i*3+j+1;
+                            td.innerHTML = li*3+lj+1;
+                            td.classList = solvenp.sboard[j][i][li*3+lj+1]
                             tr.appendChild(td);
                         }
                         nps.appendChild(tr);
@@ -57,9 +58,9 @@ npboard.setNumber(2,4,5);npboard.setNumber(6,4,1);npboard.setNumber(7,4,9);npboa
 npboard.setNumber(2,7,3);npboard.setNumber(3,7,4);npboard.setNumber(5,7,1);npboard.setNumber(6,7,7);npboard.setNumber(7,7,6);npboard.setNumber(3,8,7);npboard.setNumber(4,8,5);npboard.setNumber(3,9,1);npboard.setNumber(4,9,9);
 npboard.setNumber(5,9,6);npboard.setNumber(8,9,5);
 }
-showNPdata(npboard.get());
-showSolveNP(npboard.get());
+showNPdata(npboard);
 let result = new SolveNP(npboard);
+showSolveNP(result);
 
 
 </script>
@@ -93,5 +94,13 @@ let result = new SolveNP(npboard);
         text-align: center;
         height: 16px;
         width: 16px;
+    }
+    #res table table td.true {
+        color: rgb(255, 227, 209);
+        background-color: rgb(206, 0, 0);
+    }
+    #res table table td.false {
+        color: rgb(112, 155, 193);
+        background-color: rgb(90, 214, 255);
     }
 </style>
