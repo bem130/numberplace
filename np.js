@@ -177,4 +177,9 @@ class SolveNP {
         }
         return null;
     }
+
+    RowtrueArea(x,y) {
+        let elm = this.getRow(x,y);
+        console.log(elm)
+    }
 }
